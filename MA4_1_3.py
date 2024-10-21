@@ -54,7 +54,7 @@ def sphere_volume_parallel1(n,d,np):
     processes = []
     results = []
     with future.ProcessPoolExecutor() as ex:
-        for _ in range(10):
+        for _ in range(np):
             p = ex.submit(sphere_volume, n, d)
             processes.append(p)
 
@@ -66,20 +66,20 @@ def sphere_volume_parallel1(n,d,np):
 
     print(f"Process with parallelizing the loop took {round(end-start, 2)} seconds")
 
-    result = sum(results)/len(results)
+    result = sum(results)/np
 
     return result
 
 # parallel code - parallelize actual computations by splitting data
 def sphere_volume_parallel2(n,d,np):
     start = pc()
-    #split data into ten
-    n_split = n//10
+    #split data
+    n_split = n//np
 
     processes = []
     results = []
     with future.ProcessPoolExecutor() as ex:
-        for _ in range(10):
+        for _ in range(np):
             p = ex.submit(sphere_volume, n_split, d)
             processes.append(p)
 
@@ -106,7 +106,7 @@ def main():
     end = pc()
     print(f"Process with for-loop took {round(end-start, 2)} seconds")
 
-    sphere_volume_parallel1(n,d,8)
+    sphere_volume_parallel1(n,d,10)
 
     #part 2 - parallelize computations by splitting data
 
@@ -115,7 +115,7 @@ def main():
     end = pc()
     print(f'Proccess without parallelization took {round(end-start, 2)} seconds')
 
-    sphere_volume_parallel2(n,d,8)
+    sphere_volume_parallel2(n,d,10)
 
 
 
