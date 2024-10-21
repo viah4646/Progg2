@@ -9,6 +9,7 @@ reviewer = ""
 
 import math as m
 import random as r
+import numpy as np
 
 from time import perf_counter as pc
 
@@ -66,7 +67,7 @@ def sphere_volume_parallel1(n,d,np):
 
     print(f"Process with parallelizing the loop took {round(end-start, 2)} seconds")
 
-    result = sum(results)/np
+    result = np.mean(results)
 
     return result
 
