@@ -107,7 +107,7 @@ def main():
     end = pc()
     print(f"Process with for-loop took {round(end-start, 2)} seconds")
 
-    print(sphere_volume_parallel1(n,d,10))
+    sphere_volume_parallel1(n,d,10)
 
     #part 2 - parallelize computations by splitting data
 
