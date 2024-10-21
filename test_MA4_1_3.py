@@ -17,7 +17,7 @@ class Test(unittest.TestCase):
         # test PART 1 if the sphere volume is within the interval [3.10, 3.18]
         n = 100000
         d = 11
-        np = 2
+        np = 8
         start = pc()
         for y in range (np):
             sphere_volume(n,d)
