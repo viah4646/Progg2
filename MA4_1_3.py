@@ -88,7 +88,7 @@ def sphere_volume_parallel2(n,d,np):
             r = process.result()
             results.append(r)
 
-    result = sum(results)
+    result = sum(results)/len(results)
 
     end = pc()
 
